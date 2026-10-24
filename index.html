@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Create a custom QR code, add an optional center logo, and download it as a PNG."
+    />
+    <title>QR Studio</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="qrcode.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span></span> QR Studio</div>
+        <h1 id="page-title">Turn any link into a<br /><em>scannable moment.</em></h1>
+        <p>
+          Create a crisp, high-resolution QR code in seconds. Add your mark,
+          tune the colors, and export it when it feels right.
+        </p>
+        <div class="trust-note">
+          <span class="shield" aria-hidden="true">✓</span>
+          Everything stays in your browser
+        </div>
+      </section>
+
+      <section class="studio" aria-label="QR code creator">
+        <form id="qr-form" class="controls">
+          <div class="field field-wide">
+            <label for="content">Destination or text</label>
+            <textarea
+              id="content"
+              name="content"
+              rows="3"
+              spellcheck="false"
+              placeholder="https://example.com"
+              required
+            >https://example.com</textarea>
+          </div>
+
+          <div class="field">
+            <label for="size">Size</label>
+            <div class="select-wrap">
+              <select id="size" name="size">
+                <option value="256">256 × 256 px</option>
+                <option value="512" selected>512 × 512 px</option>
+                <option value="768">768 × 768 px</option>
+                <option value="1024">1024 × 1024 px</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="margin">Quiet zone</label>
+            <div class="select-wrap">
+              <select id="margin" name="margin">
+                <option value="1">Compact</option>
+                <option value="2" selected>Standard</option>
+                <option value="4">Generous</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="dark-color">Code color</label>
+            <div class="color-control">
+              <input id="dark-color" name="darkColor" type="color" value="#17221b" />
+              <output id="dark-value" for="dark-color">#17221B</output>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="light-color">Background</label>
+            <div class="color-control">
+              <input id="light-color" name="lightColor" type="color" value="#ffffff" />
+              <output id="light-value" for="light-color">#FFFFFF</output>
+            </div>
+          </div>
+
+          <div class="field field-wide">
+            <span class="field-label">Center logo <span>Optional</span></span>
+            <label class="upload" for="logo">
+              <span class="upload-icon" aria-hidden="true">＋</span>
+              <span>
+                <strong id="upload-title">Choose an image</strong>
+                <small id="upload-help">PNG, JPG, WebP, or SVG · up to 5 MB</small>
+              </span>
+              <span class="browse">Browse</span>
+            </label>
+            <input id="logo" name="logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" />
+            <button id="remove-logo" class="remove-logo" type="button" hidden>Remove logo</button>
+          </div>
+
+          <div class="field field-wide logo-scale" id="logo-scale-field" hidden>
+            <div class="range-heading">
+              <label for="logo-scale">Logo size</label>
+              <output id="logo-scale-value" for="logo-scale">20%</output>
+            </div>
+            <input id="logo-scale" name="logoScale" type="range" min="12" max="26" value="20" />
+          </div>
+        </form>
+
+        <div class="preview-panel">
+          <div class="preview-heading">
+            <div>
+              <span>Live preview</span>
+              <small id="dimension-label">512 × 512 px</small>
+            </div>
+            <span id="status" class="status" role="status">Ready</span>
+          </div>
+
+          <div class="canvas-stage">
+            <canvas id="qr-canvas" aria-label="Generated QR code preview"></canvas>
+          </div>
+
+          <p class="scan-tip">For best results, test the code with your phone before sharing.</p>
+          <button id="download" class="download" type="button">
+            <span aria-hidden="true">↓</span> Download PNG
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Private by design. Your content and logo never leave this device.</span>
+      <span>Made for quick, beautiful sharing.</span>
+    </footer>
+  </body>
+</html>
