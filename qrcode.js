@@ -177,6 +177,7 @@ form.addEventListener("input", (event) => {
   }
   if (event.target === controls.logoScale) {
     document.querySelector("#logo-scale-value").textContent = `${controls.logoScale.value}%`;
+    document.querySelector("#logo-scale-warning").hidden = Number(controls.logoScale.value) <= 26;
   }
   queueRender();
 });

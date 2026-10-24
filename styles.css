@@ -184,6 +184,17 @@ input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidd
 .range-heading output { color: var(--green); font-size: 0.78rem; font-weight: 700; }
 input[type="range"] { width: 100%; accent-color: var(--green); }
 
+.logo-warning {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #e5c686;
+  border-radius: 8px;
+  color: #784a08;
+  background: #fff5df;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .preview-panel {
   display: flex;
   flex-direction: column;
